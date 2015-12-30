@@ -301,6 +301,11 @@ zgen-apply() {
 
         autoload -Uz compinit && \
             compinit $ZGEN_COMPINIT_FLAGS
+
+        local zcompdump=${ZGEN_CUSTOM_COMPDUMP:-${ZDOTDIR:-$HOME}/.zcompdump}
+        if [[ -s "$zcompdump" && (! -s "${zcompdump}.zwc" || "$zcompdump" -nt "${zcompdump}.zwc") ]]; then
+            zcompile "$zcompdump"
+        fi
     fi
 }
 
