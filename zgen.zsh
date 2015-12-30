@@ -278,7 +278,7 @@ zgen-save() {
     fi
 
     # load prezto modules
-    if [[ ${ZGEN_USE_PREZTO} == 1 ]]; then
+    if [[ ${ZGEN_USE_PREZTO} == 1 && -n ${ZGEN_PREZTO_LOAD} ]]; then
         -zginit ""
         -zginit "# ### Prezto modules"
         printf %s "pmodload" >> "${ZGEN_INIT}"
